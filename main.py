@@ -11,12 +11,13 @@ logging.basicConfig(level=logging.DEBUG)
 # ---------------------------
 # Settings
 # ---------------------------
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
 class Settings(BaseSettings):
     mongodb_uri: str
     database_name: str = "hroone_db"
 
-    class Config:
-        env_file = ".env"
+    model_config = SettingsConfigDict(env_file=".env")
 
 settings = Settings()
 
